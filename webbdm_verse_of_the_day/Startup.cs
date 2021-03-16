@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using webbdm_verse_of_the_day.Models;
+using webbdm_verse_of_the_day.Services;
 
 namespace webbdm_verse_of_the_day
 {
@@ -23,6 +24,7 @@ namespace webbdm_verse_of_the_day
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IBibleService, BibleService>();
 
             // Add framework services.
             services.AddDbContext<AppDbContext>(options =>
