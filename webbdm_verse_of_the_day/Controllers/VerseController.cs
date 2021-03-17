@@ -1,12 +1,12 @@
-﻿using System.Text.Json;
+﻿using System.Threading.Tasks;
+using System;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 using webbdm_verse_of_the_day.Models;
 using webbdm_verse_of_the_day.Services;
 
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 
 namespace webbdm_verse_of_the_day.Controllers
 {
@@ -15,23 +15,18 @@ namespace webbdm_verse_of_the_day.Controllers
     public class VersesController : ControllerBase
 
     {
+        private readonly IBibleService _bible;
 
-        public VersesController(AppDbContext appDbContext)
+        public VersesController(AppDbContext appDbContext, IBibleService bible)
         {
+            _bible = bible;
         }
 
 
         [HttpGet]
-        public async Task<VerseResponse> GetVerses()
+        public async Task<VerseResponse> GetVerses(string startDate, int pageSize)
         {
-            var services = new ServiceCollection();
-            services.UseServices();
-
-            var serviceProvider = services.BuildServiceProvider();
-
-            var service = serviceProvider.GetRequiredService<IBibleService>();
-
-            var verses = await service.GetAllAsync();
+            var verses = await _bible.GetAllAsync("03/16/2021", 4);
 
             return verses;
         }

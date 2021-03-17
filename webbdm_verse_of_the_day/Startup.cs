@@ -14,21 +14,33 @@ namespace webbdm_verse_of_the_day
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration, IHostEnvironment env)
         {
-            Configuration = configuration;
+            //var Configuration = new ConfigurationBuilder()
+            //   .AddJsonFile("appsettings.json")
+            //   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+            //   .AddEnvironmentVariables();
+
+            _configuration = configuration; //Configuration.Build();
         }
 
-        public IConfiguration Configuration { get; }
+        //public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddSingleton(_configuration);
+            services.AddSingleton(c => _configuration);
+
+
+
             services.AddHttpClient<IBibleService, BibleService>();
 
             // Add framework services.
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews();
 

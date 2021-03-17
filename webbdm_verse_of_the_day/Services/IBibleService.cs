@@ -8,7 +8,7 @@ namespace webbdm_verse_of_the_day.Services
 {
     public interface IBibleService
     {
-        Task<VerseResponse> GetAllAsync();
+        Task<VerseResponse> GetAllAsync(string startDate, int pageSize);
 
     }
 }

@@ -1,32 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
-using System.Text;
+using webbdm_verse_of_the_day.Helpers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 using webbdm_verse_of_the_day.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace webbdm_verse_of_the_day.Services
 {
     public class BibleService : IBibleService
     {
-        private const string BaseUrl = "https://emfservicesstage-api.azure-api.net/bible/v1/getversesbydate?siteId=1&?startdate=03/16/2021&PageSize=10";
-
         private readonly HttpClient _client;
+        private IConfiguration _configuration;
 
-        public BibleService(HttpClient client)
+        public BibleService(IConfiguration configuration, HttpClient client)
         {
             _client = client;
+            _configuration = configuration;
         }
 
-        public async Task<VerseResponse> GetAllAsync()
+        public async Task<VerseResponse> GetAllAsync(string startDate, int pageSize)
         {
+            Uri requestURI = new Uri(_configuration.GetSection("Bible_API").GetSection("base_url").Value).
+            AddQuery("startDate", startDate).
+            AddQuery("pageSize", pageSize.ToString());
+
             var httpRequestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://emfservicesstage-api.azure-api.net/bible/v1/getversesbydate?siteId=1&startdate=03/16/2021&PageSize=10"),
+                RequestUri = requestURI,
                 Headers = {
                 { "Ocp-Apim-Subscription-Key", "d10161af8cf44f0c8267d571c682fda4" }
                 }
@@ -36,7 +39,6 @@ namespace webbdm_verse_of_the_day.Services
 
             if (!httpResponse.IsSuccessStatusCode)
             {
-                Console.WriteLine(httpResponse);
                 throw new Exception("Cannot retrieve verses");
             }
 
