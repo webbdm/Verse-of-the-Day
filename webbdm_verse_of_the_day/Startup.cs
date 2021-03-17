@@ -16,14 +16,9 @@ namespace webbdm_verse_of_the_day
     {
         public IConfiguration _configuration;
 
-        public Startup(IConfiguration configuration, IHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            //var Configuration = new ConfigurationBuilder()
-            //   .AddJsonFile("appsettings.json")
-            //   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-            //   .AddEnvironmentVariables();
-
-            _configuration = configuration; //Configuration.Build();
+            _configuration = configuration; 
         }
 
         //public IConfiguration Configuration { get; }
