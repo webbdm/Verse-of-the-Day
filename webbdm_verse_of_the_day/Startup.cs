@@ -8,25 +8,34 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using webbdm_verse_of_the_day.Models;
+using webbdm_verse_of_the_day.Services;
 
 namespace webbdm_verse_of_the_day
 {
     public class Startup
     {
+        public IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration; 
         }
 
-        public IConfiguration Configuration { get; }
+        //public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddSingleton(_configuration);
+            services.AddSingleton(c => _configuration);
+
+
+
+            services.AddHttpClient<IBibleService, BibleService>();
 
             // Add framework services.
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews();
 

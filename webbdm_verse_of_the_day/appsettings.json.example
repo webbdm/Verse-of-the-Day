@@ -1,0 +1,19 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": ""
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Bible_API": {
+    "base_url": "",
+    "api_key": "",
+    "subscription_key_header": "Ocp-Apim-Subscription-Key\t",
+    "subscription_key_header_value": ""
+  },
+  "AllowedHosts": "*"
+}
