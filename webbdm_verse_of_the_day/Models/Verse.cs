@@ -7,7 +7,7 @@ namespace webbdm_verse_of_the_day.Models
     public class Verse
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string BibleReferenceLink { get; set; }
         public string Book { get; set; }

@@ -22,7 +22,7 @@ namespace webbdm_verse_of_the_day.Controllers
 
 
         [HttpGet]
-        public async Task<System.Collections.Generic.List<Verse>> GetVerses()
+        public async Task<VerseResponse> GetVerses()
         {
             var services = new ServiceCollection();
             services.UseServices();
