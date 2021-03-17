@@ -22,6 +22,9 @@ namespace webbdm_verse_of_the_day.Services
 
         public async Task<VerseResponse> GetAllAsync(string startDate, int pageSize)
         {
+            // Value for the Ocp-Apim-Subscription-Key found in appsettings.json
+            string subscriptionKey = _configuration.GetSection("Bible_API").GetSection("subscription_key_header_value").Value;
+
             Uri requestURI = new Uri(_configuration.GetSection("Bible_API").GetSection("base_url").Value).
             AddQuery("startDate", startDate).
             AddQuery("pageSize", pageSize.ToString());
@@ -31,7 +34,7 @@ namespace webbdm_verse_of_the_day.Services
                 Method = HttpMethod.Get,
                 RequestUri = requestURI,
                 Headers = {
-                { "Ocp-Apim-Subscription-Key", "d10161af8cf44f0c8267d571c682fda4" }
+                { "Ocp-Apim-Subscription-Key", subscriptionKey }
                 }
             };
 
