@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Verses";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>This is where the Verses are shown</p>
+
+<ul>
+    @foreach (var verse in ViewBag.verses)
+    {
+    <li>
+        <span>@verse.Book</span><span>@verse.VerseText</span>
+
+    </li>
+    }
+</ul>
