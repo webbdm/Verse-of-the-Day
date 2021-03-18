@@ -30,6 +30,5 @@ namespace webbdm_verse_of_the_day.Controllers
             return View("Favorites");
         }
 
-
     }
 }

@@ -1,4 +1,11 @@
-﻿<div>
+﻿@{
+    ViewData["Title"] = "My Favorites";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+<a href="/verses">Select Verses</a>
+<div>
     @foreach (var favoriteVerse in ViewBag.favoriteVerses)
     {
         <form asp-controller="Verses" action="/favorite" method="post">

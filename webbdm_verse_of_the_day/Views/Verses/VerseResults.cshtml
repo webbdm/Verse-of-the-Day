@@ -1,4 +1,6 @@
-﻿<div>
+﻿<a href="/favorites">View My Favorites</a>
+<a href="/verses">Select Verses</a>
+<div>
     @foreach (var verse in ViewBag.verses)
     {
         <form asp-controller="Verses" action="/favorite" method="post">
