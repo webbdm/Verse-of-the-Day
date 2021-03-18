@@ -6,24 +6,26 @@
             background-size: cover;
         }
     </style>
+    <link rel="stylesheet" href="../../Assets/css/styles.css" />
 </head>
 
 <body>
 
     <a href="/favorites">View My Favorites</a>
     <a href="/verses">Select Verses</a>
-    <div>
+    <div class="verse-box">
         @foreach (var verse in ViewBag.verses)
         {
-            <span>
-                <span>@verse.Book</span><span>@verse.VerseText</span>
-                <input type="hidden"  name="id" value="@verse.Id" />
+            <div class="verse-panel">
+                <span class="verse-text">@verse.Book</span><span>@verse.VerseText</span>
+                <img src="@verse.ImageLink"/>
+                @*<input type="hidden"  name="id" value="@verse.Id" />
                 <input type="hidden"  name="versetext" value="@verse.VerseText" />
                 <input type="hidden"  name="book" value="@verse.Book" />
                 <input type="hidden"  name="chapter" value="@verse.Chapter" />
-                <input type="hidden"  name="image" value="@verse.ImageLink" />
-                <button name="favoriteBtn" id="@verse.Id" value="@verse">Favorite</button>
-            </span>
+                <input type="hidden"  name="image" value="@verse.ImageLink" />*@
+                <button class="favoriteBtn" name="favoriteBtn" id="@verse.Id" value="@verse">Favorite</button>
+            </div>
             <script>
                 document.getElementById("@verse.Id").addEventListener("click", async function () {
 

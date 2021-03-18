@@ -20,13 +20,16 @@
     <div>
         @foreach (var favorite in ViewBag.favorites)
         {
-            <form asp-controller="Favorites" action="/unfavorite" method="post">
-                <span>
-                    <span>@favorite.Verse.Book</span><span>@favorite.Verse.VerseText</span>
-                    <input type="hidden" name="verseId" value=@favorite.Verse.Id />
-                    @*<button type="submit">Remove</button>*@
-                </span>
-            </form>
+            <div class="verse-panel">
+                <form asp-controller="Favorites" action="/unfavorite" method="post">
+                    <span>
+                        <span>@favorite.Verse.Book</span><span>@favorite.Verse.VerseText</span>
+                        <input type="hidden" name="verseId" value=@favorite.Verse.Id />
+                        @*<button type="submit">Remove</button>*@
+                    </span>
+                   
+                </form>
+            </div>
             
         }
     </div>
