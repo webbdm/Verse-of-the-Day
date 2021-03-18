@@ -6,16 +6,31 @@
 .navigation {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     min-width: 100%;
     background-color: rgba(0,0,0,0.2);
-    padding: 20px 0px;
+    padding: 0px;
     margin-bottom: 20px;
     position: sticky;
     top: 0;
     z-index: 999999;
     backdrop-filter: blur(5px); /* New property, not available in all browsers yet */
 }
+
+    .navigation .nav-left {
+        
+    }
+
+        .navigation .nav-left .logo {
+            height: 50px;
+            width: auto;
+            margin: 10px 0px 10px 20px;
+        }
+
+    .navigation h1 {
+        color: white;
+    }
 
     .navigation .nav-right a {
         text-decoration: none;
@@ -114,4 +129,33 @@ button {
     border-color: #08acec;
     border-radius: 5px;
     box-shadow: none;
+}
+
+@media screen and (max-width: 475px) {
+    .navigation {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 130px;
+       
+    }
+
+    .navigation .nav-left {
+    }
+
+        .navigation .nav-left .logo {
+         
+        }
+
+        .navigation h1 {
+            display: none;
+            order: 3;
+        }
+
+    .navigation .nav-right a {
+       
+    }
+
+        .navigation .nav-right a:hover {
+         
+        }
 }
