@@ -45,51 +45,71 @@ namespace webbdm_verse_of_the_day.Controllers
             return View("VerseResults");
         }
 
-        [HttpPost("/favorite")]
-        public bool SaveVerseToFavorites([FromForm] Verse verse) {
+        [HttpPost("/favorited")]
+        public StatusCodeResult SaveVerseToFavorites([FromBody] Verse verse)
+        {
 
 
-            // Create a new favorite using the verse
-            Favorite fav = new Favorite { VerseId = verse.Id };
-
-            _context.Favorites.Add(fav);
-            _context.SaveChangesAsync();
+            // We store verses in the verses table and build up a cache over time in the db
+            // Check if a copy of the verse already exists
+            Verse foundVerse = _context.Verses.Find(verse.Id);
 
 
-            // Find the original verse
-            Verse foundVerse = _context.Verses.Find(fav.VerseId);
+            // Do nothing, Verse is already stored and a favorite exists
+            if (foundVerse != null) return StatusCode(204);
 
 
-            // Create if we have't favorite yet
+            // Create the Verse and store a record in Favorites
             if (foundVerse == null)
             {
                 // Mark as favorited
                 verse.HasBeenFavorited = true;
+                _context.Verses.Add(verse);
 
-                var createdVerse = _context.Verses.Add(verse);
 
-                //Console.WriteLine(createdVerse);
-                //Console.WriteLine("Created Verse");
+                // Create a new favorite using the verse
+                Favorite fav = new Favorite { VerseId = verse.Id };
 
-            } else if(foundVerse.HasBeenFavorited == true)
-            {
-  
-                //Console.WriteLine($"{foundVerse.Book} {foundVerse.Chapter}:{foundVerse.VerseNumbers} has already been favorited!");
-                return true;
+                _context.Favorites.Add(fav);
             }
-            else {
-                // Update as favorited (if not created)
-                foundVerse.HasBeenFavorited = true;
-                //Console.WriteLine($"{foundVerse.Book} {foundVerse.Chapter}:{foundVerse.VerseNumbers} has been saved To Favorites");
-
-            }
-
 
             _context.SaveChangesAsync();
 
+            return StatusCode(200);
 
-            return true;
         }
+
+
+        //[HttpPost("/favorite")]
+        //public void SaveVerseToFavorites([FromForm] Verse verse) {
+
+
+        //    // We store verses in the verses table and build up a cache over time in the db
+        //    // Check if a copy of the verse already exists
+        //    Verse foundVerse = _context.Verses.Find(verse.Id);
+
+
+        //    // Do nothing, Verse is already stored and a favorite exists
+        //    if (foundVerse != null) return;
+
+
+        //    // Create the Verse and store a record in Favorites
+        //    if (foundVerse == null)
+        //    {
+        //        // Mark as favorited
+        //         verse.HasBeenFavorited = true;
+        //        _context.Verses.Add(verse);
+
+
+        //        // Create a new favorite using the verse
+        //        Favorite fav = new Favorite { VerseId = verse.Id };
+
+        //        _context.Favorites.Add(fav);
+        //    }
+
+        //    _context.SaveChangesAsync();
+
+        //}
 
     }
 }

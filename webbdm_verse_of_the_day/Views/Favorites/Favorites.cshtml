@@ -18,15 +18,16 @@
 
     <a href="/verses">Select Verses</a>
     <div>
-        @foreach (var favoriteVerse in ViewBag.favoriteVerses)
+        @foreach (var favorite in ViewBag.favorites)
         {
-            <form asp-controller="Verses" action="/favorite" method="post">
+            <form asp-controller="Favorites" action="/unfavorite" method="post">
                 <span>
-                    <span>@favoriteVerse.Book</span><span>@favoriteVerse.VerseText</span>
-                    <input type="hidden" name="id" value=@favoriteVerse.Id />
-                    <button type="submit">Remove</button>
+                    <span>@favorite.Verse.Book</span><span>@favorite.Verse.VerseText</span>
+                    <input type="hidden" name="verseId" value=@favorite.Verse.Id />
+                    @*<button type="submit">Remove</button>*@
                 </span>
             </form>
+            
         }
     </div>
 
