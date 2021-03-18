@@ -1,0 +1,8 @@
+﻿<ul>
+    @foreach (var verse in ViewBag.verses)
+    {
+        <li>
+            <span>@verse.Book</span><span>@verse.VerseText</span>
+        </li>
+    }
+</ul>

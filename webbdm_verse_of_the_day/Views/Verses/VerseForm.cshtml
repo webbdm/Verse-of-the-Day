@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Verses";
+}
+
+@model webbdm_verse_of_the_day.Models.ViewModels.VerseRequest
+
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>Verse of The Day</p>
+
+<form asp-controller="Verses" asp-action="SendVerse" method="post">
+    <input type="text" name="StartDate" />
+    <input type="number" name="PageSize" />
+
+    <input type="submit" value="Submit" />
+</form>

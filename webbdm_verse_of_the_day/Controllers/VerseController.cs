@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using System;
-
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 
 using webbdm_verse_of_the_day.Models;
+using webbdm_verse_of_the_day.Models.ViewModels;
 using webbdm_verse_of_the_day.Services;
 
 
@@ -12,26 +11,36 @@ namespace webbdm_verse_of_the_day.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class VersesController : ControllerBase
+    public class VersesController : Controller
 
     {
         private readonly IBibleService _bible;
 
-        public VersesController(AppDbContext appDbContext, IBibleService bible)
+        public VersesController(IBibleService bible)
         {
             _bible = bible;
         }
 
-
-        [HttpGet]
-        public async Task<VerseResponse> GetVerses(string startDate, int pageSize)
+        private async Task<VerseResponse> GetVerses(string startDate, int pageSize)
         {
-            var verses = await _bible.GetAllAsync("03/16/2021", 4);
-
-            return verses;
+            return await _bible.GetAllAsync(startDate, pageSize);
         }
 
 
+        [HttpGet]
+        public IActionResult Verses()
+        {
+            return View("VerseForm");
+        }
+
+        [HttpPost]
+        public IActionResult SendVerse([FromForm] VerseRequest verseRequest)
+        {
+
+            ViewBag.verses =  GetVerses(verseRequest.StartDate, verseRequest.PageSize).Result.verses;
+
+            return View("VerseResults");
+        }
 
     }
 }
