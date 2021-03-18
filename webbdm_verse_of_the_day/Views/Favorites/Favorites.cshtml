@@ -1,37 +1,24 @@
 ﻿@{
     ViewData["Title"] = "My Favorites";
+    Layout = "_Layout";
 }
+ <h2 class="favorites-header">@ViewData["Title"].</h2>
 
-<head>
-    <style type="text/css">
-        body {
-            background: url('../../Assets/mountains.jpeg') no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
-</head>
-
-
-
-<body>
-    <h2>@ViewData["Title"].</h2>
-
-    <a href="/verses">Select Verses</a>
-    <div>
+<div class="favorites-wrapper">
+    <div class="favorites-box">
         @foreach (var favorite in ViewBag.favorites)
         {
-            <div class="verse-panel">
+            <div class="favorites-panel">
                 <form asp-controller="Favorites" action="/unfavorite" method="post">
                     <span>
                         <span>@favorite.Verse.Book</span><span>@favorite.Verse.VerseText</span>
                         <input type="hidden" name="verseId" value=@favorite.Verse.Id />
                         @*<button type="submit">Remove</button>*@
                     </span>
-                   
+
                 </form>
             </div>
-            
+
         }
     </div>
-
-</body>
+</div>

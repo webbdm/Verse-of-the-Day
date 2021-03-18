@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Verse of the Day</title>
+
+
+    <style type="text/css">
+        body {
+            background: url('../../Assets/mountains.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../../Assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="navigation">
+        <div class="nav-right">
+            <a href="/favorites">View My Favorites</a>
+            <a href="/verses">Select Verses</a>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

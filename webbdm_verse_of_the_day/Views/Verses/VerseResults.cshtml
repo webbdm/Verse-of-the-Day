@@ -1,30 +1,26 @@
-﻿
-<head>
-    <style type="text/css">
-        body {
-            background: url('../../Assets/mountains.jpeg') no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
-    <link rel="stylesheet" href="../../Assets/css/styles.css" />
-</head>
+﻿@{
+    Layout = "_Layout";
+}
+
 
 <body>
-
-    <a href="/favorites">View My Favorites</a>
-    <a href="/verses">Select Verses</a>
     <div class="verse-box">
         @foreach (var verse in ViewBag.verses)
         {
             <div class="verse-panel">
-                <span class="verse-text">@verse.Book</span><span>@verse.VerseText</span>
-                <img src="@verse.ImageLink"/>
-                @*<input type="hidden"  name="id" value="@verse.Id" />
-                <input type="hidden"  name="versetext" value="@verse.VerseText" />
-                <input type="hidden"  name="book" value="@verse.Book" />
-                <input type="hidden"  name="chapter" value="@verse.Chapter" />
-                <input type="hidden"  name="image" value="@verse.ImageLink" />*@
+                <span class="verse-text">@verse.ReferenceText</span>
+
+                <span class="verse-text">@verse.VerseText</span>
+
                 <button class="favoriteBtn" name="favoriteBtn" id="@verse.Id" value="@verse">Favorite</button>
+
+                <img src="@verse.ImageLink" />
+
+                @*<input type="hidden"  name="id" value="@verse.Id" />
+                    <input type="hidden"  name="versetext" value="@verse.VerseText" />
+                    <input type="hidden"  name="book" value="@verse.Book" />
+                    <input type="hidden"  name="chapter" value="@verse.Chapter" />
+                    <input type="hidden"  name="image" value="@verse.ImageLink" />*@
             </div>
             <script>
                 document.getElementById("@verse.Id").addEventListener("click", async function () {
@@ -36,9 +32,9 @@
                             'Content-type': 'application/json'
                         },
                         body: JSON.stringify({
-                            id: "@verse.Id", 
+                            id: "@verse.Id",
                             versetext: "@verse.VerseText",
-                            book: "@verse.Book", 
+                            book: "@verse.Book",
                             chapter: "@verse.Chapter",
                             image: "@verse.ImageLink"
                         })
@@ -47,12 +43,4 @@
             </script>
         }
     </div>
-
 </body>
-
-<script type="text/javascript">
-
-   
-
-    
-</script>
