@@ -1,18 +1,32 @@
-﻿<a href="/favorites">View My Favorites</a>
-<a href="/verses">Select Verses</a>
-<div>
-    @foreach (var verse in ViewBag.verses)
-    {
-        <form asp-controller="Verses" action="/favorite" method="post">
-            <span>
-                <span>@verse.Book</span><span>@verse.VerseText</span>
-                <input type="hidden" name="id" value=@verse.Id />
-                <input type="hidden" name="text" value="@verse.VerseText" />
-                <input type="hidden" name="book" value="@verse.Book" />
-                <input type="hidden" name="chapter" value="@verse.Chapter" />
-                <input type="hidden" name="image" value="@verse.ImageLink" />
-                <button value="@verse">Favorite</button>
-            </span>
-        </form>
-    }
-</div>
+﻿
+<head>
+    <style type="text/css">
+        body {
+            background: url('../../Assets/mountains.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/favorites">View My Favorites</a>
+    <a href="/verses">Select Verses</a>
+    <div>
+        @foreach (var verse in ViewBag.verses)
+        {
+            <form asp-controller="Verses" action="/favorite" method="post">
+                <span>
+                    <span>@verse.Book</span><span>@verse.VerseText</span>
+                    <input type="hidden" name="id" value=@verse.Id />
+                    <input type="hidden" name="text" value="@verse.VerseText" />
+                    <input type="hidden" name="book" value="@verse.Book" />
+                    <input type="hidden" name="chapter" value="@verse.Chapter" />
+                    <input type="hidden" name="image" value="@verse.ImageLink" />
+                    <button value="@verse">Favorite</button>
+                </span>
+            </form>
+        }
+    </div>
+
+</body>

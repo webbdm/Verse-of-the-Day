@@ -2,14 +2,27 @@
     ViewData["Title"] = "Verses";
 }
 
-<h2>@ViewData["Title"].</h2>
+<head>
+    <style type="text/css">
+        body {
+            background: url('../../Assets/mountains.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
 
-<p>Verse of The Day</p>
-<a href="/favorites">View My Favorites</a>
+<body>
 
-<form asp-controller="Verses" asp-action="SendVerse" method="post">
-    <input type="text" name="StartDate" />
-    <input type="number" name="PageSize" />
+    <h2>@ViewData["Title"].</h2>
 
-    <input type="submit" value="Submit" />
-</form>
+    <p>Verse of The Day</p>
+    <a href="/favorites">View My Favorites</a>
+
+    <form asp-controller="Verses" asp-action="SendVerse" method="post">
+        <input type="text" name="StartDate" />
+        <input type="number" name="PageSize" />
+
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
