@@ -11,23 +11,24 @@ namespace webbdm_verse_of_the_day.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FavoritesController : ControllerBase
+    public class FavoritesController : Controller
 
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly AppDbContext _context;
 
-        public FavoritesController(AppDbContext appDbContext)
+        public FavoritesController(AppDbContext context)
         {
-            _appDbContext = appDbContext;
+            _context = context;
         }
 
 
         [HttpGet]
-        public IActionResult GetAllFavorites()
+        public IActionResult Favorites()
         {
-            return Ok(_appDbContext.Favorites);
-        }
+            ViewBag.favoriteVerses = _context.Verses.Where(v => v.HasBeenFavorited == true);
 
+            return View("Favorites");
+        }
 
 
     }

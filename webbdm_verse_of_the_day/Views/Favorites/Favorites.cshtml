@@ -1,0 +1,12 @@
+﻿<div>
+    @foreach (var favoriteVerse in ViewBag.favoriteVerses)
+    {
+        <form asp-controller="Verses" action="/favorite" method="post">
+            <span>
+                <span>@favoriteVerse.Book</span><span>@favoriteVerse.VerseText</span>
+                <input type="hidden" name="id" value=@favoriteVerse.Id />
+                <button type="submit">Remove</button>
+            </span>
+        </form>
+    }
+</div>

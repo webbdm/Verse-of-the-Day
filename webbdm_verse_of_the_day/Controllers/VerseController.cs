@@ -68,15 +68,19 @@ namespace webbdm_verse_of_the_day.Controllers
 
                 var createdVerse = _context.Verses.Add(verse);
 
-                Console.WriteLine(createdVerse);
-                Console.WriteLine("Created Verse");
+                //Console.WriteLine(createdVerse);
+                //Console.WriteLine("Created Verse");
 
+            } else if(foundVerse.HasBeenFavorited == true)
+            {
+  
+                //Console.WriteLine($"{foundVerse.Book} {foundVerse.Chapter}:{foundVerse.VerseNumbers} has already been favorited!");
+                return true;
             }
             else {
-
                 // Update as favorited (if not created)
                 foundVerse.HasBeenFavorited = true;
-                Console.WriteLine($"{foundVerse.Book} {foundVerse.Chapter}:{foundVerse.VerseNumbers} has been saved To Favorites");
+                //Console.WriteLine($"{foundVerse.Book} {foundVerse.Chapter}:{foundVerse.VerseNumbers} has been saved To Favorites");
 
             }
 
