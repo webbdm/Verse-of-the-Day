@@ -10,6 +10,11 @@
     min-width: 100%;
     background-color: rgba(0,0,0,0.2);
     padding: 20px 0px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999999;
+    backdrop-filter: blur(5px); /* New property, not available in all browsers yet */
 }
 
     .navigation .nav-right a {
@@ -49,10 +54,11 @@
     justify-content: space-around;
     align-items: center;
     color: white;
-    border: 1px solid white;
+    border: 1px solid #08acec;
     margin: 20px;
     border-radius: 5px;
     background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px); /* New property, not available in all browsers yet */
 }
 
 .verse-text {
