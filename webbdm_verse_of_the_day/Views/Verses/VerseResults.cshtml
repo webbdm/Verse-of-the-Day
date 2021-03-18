@@ -15,52 +15,34 @@
     <div>
         @foreach (var verse in ViewBag.verses)
         {
-            @*<form asp-controller="Verses" action="/favorite" method="post">*@
-                <span>
-                    <span>@verse.Book</span><span>@verse.VerseText</span>
-                    <input type="hidden" id="@verse.Id" name="id" value="@verse.Id" />
-                    <input type="hidden" id="@verse.VerseText" name="versetext" value="@verse.VerseText" />
-                    <input type="hidden" id="@verse.Book" name="book" value="@verse.Book" />
-                    <input type="hidden" id="@verse.Chapter" name="chapter" value="@verse.Chapter" />
-                    <input type="hidden" id="@verse.ImageLink" name="image" value="@verse.ImageLink" />
-                    <button name="favoriteBtn" id="@verse.ReferenceText" value="@verse">Favorite</button>
-                </span>
-                <script>
-                    document.getElementById("@verse.ReferenceText").addEventListener("click", async function () {
+            <span>
+                <span>@verse.Book</span><span>@verse.VerseText</span>
+                <input type="hidden"  name="id" value="@verse.Id" />
+                <input type="hidden"  name="versetext" value="@verse.VerseText" />
+                <input type="hidden"  name="book" value="@verse.Book" />
+                <input type="hidden"  name="chapter" value="@verse.Chapter" />
+                <input type="hidden"  name="image" value="@verse.ImageLink" />
+                <button name="favoriteBtn" id="@verse.Id" value="@verse">Favorite</button>
+            </span>
+            <script>
+                document.getElementById("@verse.Id").addEventListener("click", async function () {
 
-                        const id = document.getElementById("@verse.Id").value;
-                        const versetext = document.getElementById("@verse.VerseText").value;
-                        const book = document.getElementById("@verse.Book").value;
-                        const chapter = document.getElementById("@verse.Chapter").value;
-                        const image = document.getElementById("@verse.ImageLink").value;
-
-
-
-                         console.log({
-                            id: id,
-                            versetext: versetext,
-                            book: book,
-                            chapter: chapter,
-                            image: image
-                        });
-
-                        await fetch('https://localhost:5001/favorited', {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                id: id,
-                                versetext: versetext,
-                                book: book,
-                                chapter: chapter,
-                                image: image
-                            })
+                    await fetch('https://localhost:5001/favorited', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: "@verse.Id", 
+                            versetext: "@verse.VerseText",
+                            book: "@verse.Book", 
+                            chapter: "@verse.Chapter",
+                            image: "@verse.ImageLink"
                         })
-                    });
-                </script>
-            @*</form>*@
+                    })
+                });
+            </script>
         }
     </div>
 
