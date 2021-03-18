@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace webbdm_verse_of_the_day.Models
@@ -15,6 +14,7 @@ namespace webbdm_verse_of_the_day.Models
         public int Chapter { get; set; }
 
         public string FacebookShareUrl { get; set; }
+        public bool HasBeenFavorited { get; set; }
 
         public string  ImageLink { get; set; }
         public bool IsValid { get; set; }
@@ -31,6 +31,6 @@ namespace webbdm_verse_of_the_day.Models
         public DateTime VerseDate { get; set; }
         public string VerseNumbers { get; set; }
         public string VerseText { get; set; }
-        public string VideoLink { get; set; }
+        public string VideoLink { get; set; }    
     }
 }
