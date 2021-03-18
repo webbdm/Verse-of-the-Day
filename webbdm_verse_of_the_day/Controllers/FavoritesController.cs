@@ -36,6 +36,7 @@ namespace webbdm_verse_of_the_day.Controllers
             return View("Favorites");
         }
 
+        // Stretch Goal
         [HttpPost("/unfavorite")]
         public IActionResult Unfavorite([FromForm] string verseId)
         {
