@@ -45,10 +45,9 @@ namespace webbdm_verse_of_the_day.Services
                 throw new Exception("Cannot retrieve verses");
             }
 
-            var content = await httpResponse.Content.ReadAsStringAsync();
-            var verses = JsonConvert.DeserializeObject<VerseResponse>(content);
+             return JsonConvert.DeserializeObject<VerseResponse>(await httpResponse.Content.ReadAsStringAsync());
 
-            return verses;
+           
         }
     }
 }
