@@ -1,4 +1,9 @@
-﻿body {
+﻿
+html, body {
+    min-height: 100vh;
+}
+
+body {
     margin: 0;
     font-family: 'Didact Gothic', sans-serif;
 }
@@ -47,10 +52,25 @@
             /* border: 1px solid #08acec;*/
             border-radius: 5px;
         }
-    
-.verse-form {
+
+.verse-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    margin-top: 10%;
+}
+
+.verse-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px;
+    max-height: 200px;
+}
+
+.verse-form .verse-form-inputs {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -60,6 +80,17 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     flex-grow: 1;
+}
+
+.verse-form-panel{
+    max-height: 300px;
+}
+
+.get-verses-btn {
+    width: 100%;
+    margin: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .verse-panel {
@@ -81,6 +112,11 @@
     max-width: 300px;
 }
 
+.favorites-verse-text {
+    margin: 5px;
+    min-width: 100%;
+}
+
 .favorites-header {
     text-align: center;
 }
@@ -88,15 +124,15 @@
 .favorites-wrapper{
     min-width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
 
 }
 
 .favorites-panel {
     color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     border: 1px solid white;
     padding: 10px;
     margin: 20px;
@@ -104,9 +140,22 @@
     background-color: rgba(0,0,0,0.3);
 }
 
+    .favorites-panel .favorites-left {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+        .favorites-panel .favorites-left .favorites-panel-text {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
 .favorites-box {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+/*    display: flex;
+    flex-direction: column;*/
 }
 
 

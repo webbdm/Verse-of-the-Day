@@ -4,16 +4,18 @@
 }
 
 
-<div class="verse-form">
-    <div class="panel">
+<div class="verse-wrapper">
+    <div class="verse-panel verse-form-panel">
 
         <h2>@ViewData["Title"]</h2>
 
-        <form asp-controller="Verses" asp-action="SendVerse" method="post">
-            <input type="text" name="StartDate" />
-            <input type="number" name="PageSize" />
+        <form class="verse-form "asp-controller="Verses" asp-action="SendVerse" method="post">
+            <div class="verse-form-inputs">
+                <input type="text" name="StartDate" />
+                <input type="number" name="PageSize" />
+            </div>
 
-            <input type="submit" value="Submit" />
+            <button class="get-verses-btn" type="submit" value="Get Verses">Get Verses</button>
         </form>
 
     </div>
