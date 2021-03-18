@@ -1,8 +1,16 @@
-﻿<ul>
+﻿<div>
     @foreach (var verse in ViewBag.verses)
     {
-        <li>
-            <span>@verse.Book</span><span>@verse.VerseText</span>
-        </li>
+        <form asp-controller="Verses" action="/favorite" method="post">
+            <span>
+                <span>@verse.Book</span><span>@verse.VerseText</span>
+                <input type="hidden" name="id" value=@verse.Id />
+                <input type="hidden" name="text" value="@verse.VerseText" />
+                <input type="hidden" name="book" value="@verse.Book" />
+                <input type="hidden" name="chapter" value="@verse.Chapter" />
+                <input type="hidden" name="image" value="@verse.ImageLink" />
+                <button value="@verse">Favorite</button>
+            </span>
+        </form>
     }
-</ul>
+</div>
