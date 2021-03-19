@@ -34,6 +34,10 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Verses\" />
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Favorites\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Assets\css\" />
+    <Folder Include="Pages\Shared\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

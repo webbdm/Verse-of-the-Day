@@ -11,7 +11,7 @@ namespace webbdm_verse_of_the_day.Models
         public string BibleReferenceLink { get; set; }
         public string Book { get; set; }
 
-        public int Chapter { get; set; }
+        public string Chapter { get; set; }
 
         public string FacebookShareUrl { get; set; }
         public bool HasBeenFavorited { get; set; }

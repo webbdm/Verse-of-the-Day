@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "My Favorites";
+    Layout = "_Layout";
+}
+ <h2 class="favorites-header">@ViewData["Title"]</h2>
+
+<div class="favorites-wrapper">
+    <div class="favorites-box">
+        @foreach (var favorite in ViewBag.favorites)
+        {
+            <div class="favorites-panel">
+                <div class="favorites-left">
+                    @*<form asp-controller="Favorites" action="/unfavorite" method="post">*@
+                    <div class="favorites-text">
+                        <span class="favorites-verse-text left-corner-text">@favorite.Verse.ReferenceText</span>
+                        <input type="hidden" name="verseId" value=@favorite.Verse.Id />
+                        @*<button type="submit">Remove</button>*@
+                    </div>
+
+                        <span class="favorites-verse-text">@favorite.Verse.VerseText</span>
+                    @*</form>*@
+                </div>
+                <div class="favorites-right">
+                    <img src="@favorite.Verse.ImageLink"/>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

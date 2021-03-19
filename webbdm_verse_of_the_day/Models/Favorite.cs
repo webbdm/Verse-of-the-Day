@@ -9,5 +9,7 @@ namespace webbdm_verse_of_the_day.Models
         [Key]
         public int Id { get; set; }
         public string VerseId { get; set; }
+
+        public Verse Verse { get; set; }
     }
 }

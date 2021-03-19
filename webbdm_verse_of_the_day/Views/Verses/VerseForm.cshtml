@@ -1,17 +1,23 @@
 ﻿@{
     ViewData["Title"] = "Verses";
+    Layout = "_Layout";
 }
 
-@model webbdm_verse_of_the_day.Models.ViewModels.VerseRequest
 
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<div class="verse-wrapper">
+    <div class="verse-panel verse-form-panel">
 
-<p>Verse of The Day</p>
+        <h2 class="verse-panel-header">Fill your day with the Living Word of God</h2>
 
-<form asp-controller="Verses" asp-action="SendVerse" method="post">
-    <input type="text" name="StartDate" />
-    <input type="number" name="PageSize" />
+        <form class="verse-form "asp-controller="Verses" asp-action="SendVerse" method="post">
+            <div class="verse-form-inputs">
+                <input required placeholder="Start Date MM/DD/YY" type="text" name="StartDate" />
+                <input id="numberverses" required placeholder="Number of Verses" type="number" name="PageSize" />
+            </div>
 
-    <input type="submit" value="Submit" />
-</form>
+            <button class="get-verses-btn" type="submit" value="Get Verses">Get Verses</button>
+        </form>
+
+    </div>
+</div>
+

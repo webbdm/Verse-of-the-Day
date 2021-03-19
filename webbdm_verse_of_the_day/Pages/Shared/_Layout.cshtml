@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Verse of the Day</title>
+
+
+    <style type="text/css">
+        body {
+            background: url('../../Assets/mountains.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../../Assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="navigation">
+        <div class="nav-left">
+            <img class="logo" src="../../Assets/klove_logo.png"/>
+        </div>
+        <h1 class="nav-title">Verse of the Day</h1>
+        <div class="nav-right">
+            <a href="/verses">Get Verses</a>
+            <a href="/favorites">My Favorites</a>
+        </div>
+    </div>
+    @*<div>*@
+        @RenderBody()
+    @*</div>*@
+</body>
+</html>
