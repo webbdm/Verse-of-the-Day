@@ -21,6 +21,8 @@ body {
     top: 0;
     z-index: 999999;
     backdrop-filter: blur(5px); /* New property, not available in all browsers yet */
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
 }
 
     .navigation .nav-left {
@@ -84,15 +86,16 @@ body {
         border-bottom-right-radius: 0px;
         margin: 0;
     }
+        .verse-form .verse-form-inputs input:focus {
+            outline: none;
+        }
 
-#numberverses {
-    border-top: 1px solid #08acec;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-}
+        #numberverses {
+            border-top: 1px solid #08acec;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
 
-
-    
 
 .verse-box {
     display: flex;
@@ -125,11 +128,13 @@ body {
     border-radius: 5px;
     background-color: rgba(0,0,0,0.3);
     backdrop-filter: blur(2px); /* New property, not available in all browsers yet */
+    -webkit-backdrop-filter: blur(2px);
+    -moz-backdrop-filter: blur(2px);
 }
 
 .verse-panel-header {
     text-align: center;
-    margin-top: 30px;
+    margin: 30px 10px;
 }
 
 .verse-text {
@@ -176,6 +181,9 @@ body {
     margin: 20px;
     border-radius: 5px;
     background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px); /* New property, not available in all browsers yet */
+    -webkit-backdrop-filter: blur(2px);
+    -moz-backdrop-filter: blur(2px);
 }
 
     .favorites-panel .favorites-left {
