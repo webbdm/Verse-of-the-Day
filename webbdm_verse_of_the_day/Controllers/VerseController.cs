@@ -11,7 +11,7 @@ using webbdm_verse_of_the_day.Services;
 namespace webbdm_verse_of_the_day.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/")]
     public class VersesController : Controller
 
     {
