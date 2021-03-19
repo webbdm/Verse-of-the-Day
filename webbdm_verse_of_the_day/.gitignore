@@ -12,6 +12,9 @@
 
 appsettings.json
 
+# Exclude SQL Db Files
+*.db
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
