@@ -42,16 +42,20 @@ Build any .NET Core sample using the .NET Core CLI, which is installed with [the
 these commands from the CLI in the directory of any sproject
 ```console
 dotnet build
-dotnet run
 ```
 
-These will install any needed dependencies, build the project, and run
-the project respectively.
+These will install any needed dependencies a build the project
+
 
 ## Entity Framework Core DB Migrations
-This project uses Entity Framework Core as an ORM, and requires migrations to be run on the db (vod.db file) before the application can be started. Make sure there is a DefaultConnection string in appsetings.json prior to running these commands. 
+This project uses Entity Framework Core as an ORM, and requires migrations to be run on the db (vod.db file) before the application can be started. Make sure there is a DefaultConnection string in appsettings.json prior to running these commands. 
 
 [Read Microsoft Docs for EF Core](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
+
+Install this package for EF Core migration commands 
+```console
+dotnet tool install --global dotnet-ef
+```
 
 Run this commands using the dotnet CLI:
 ```console
