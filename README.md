@@ -1,6 +1,5 @@
 # Verse of the Day - .NET Core 
-MVC .NET Core 3.1 Web Application built with Entity Framework Core
-& SQL Lite
+MVC .NET Core 3.1 Web Application built with Entity Framework Core,SQL Lite, and a fully responsive UI
 
 ![Verse of the Day](https://user-images.githubusercontent.com/13399339/111725456-18769180-8835-11eb-89de-ea1c1446b83a.png)
 ## The Armor of God
@@ -9,7 +8,7 @@ Ephesians 6:10-11
 
 10 Finally, be strong in the Lord and in his mighty power. 11 Put on the full armor of God, so that you can take your stand against the devil’s schemes.
 
-This project provides daily scripture to all of those who need to hear it. Daily verses can be selcted in any amount, and any scripture that is calling you to a deeper look today can be saved to the "My Favorites" page
+This project provides daily scripture to all of those who need to hear it. Daily verses can be selected in any amount, and any scripture that is calling you to a deeper look today can be saved to the "My Favorites" page
 
 ## Important Credentials & Files Required:
 Copy appsettings.json.example as appsettings.json in the same folder
@@ -101,3 +100,5 @@ To build and run Verse of the Day:
  ![Homepage](https://user-images.githubusercontent.com/13399339/111725456-18769180-8835-11eb-89de-ea1c1446b83a.png)
 ## Verses from the Verse of the Day API
 ![Verses](https://user-images.githubusercontent.com/13399339/111725501-2d532500-8835-11eb-865d-a38b2949984b.png)
+## My Favorites 
+![Favorites](https://user-images.githubusercontent.com/13399339/111820960-1aca0180-88b0-11eb-9534-90a2a9d72ffc.png)
