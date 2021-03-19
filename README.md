@@ -44,7 +44,7 @@ these commands from the CLI in the directory of any sproject
 dotnet build
 ```
 
-These will install any needed dependencies a build the project
+These will install any needed dependencies and build the project
 
 
 ## Entity Framework Core DB Migrations
