@@ -36,10 +36,10 @@ and add your keys/secrets. These are required to access the Verse of the Day API
 ```
 ## Database Connection string
 Create a file (same project folder level as appsettings.json) called vod.db and this will serve as your SQL Lite database. This will give you a database connection string value of "Data Source=vod.db" and it will need to be placed as the value for "DefaultConnection" inside ConnectionStrings in appsettings.json
+
 ## Building the project
 Build any .NET Core sample using the .NET Core CLI, which is installed with [the .NET Core SDK](https://www.microsoft.com/net/download). Then run
 these commands from the CLI in the directory of any sproject
-
 ```console
 dotnet build
 dotnet run
@@ -48,7 +48,21 @@ dotnet run
 These will install any needed dependencies, build the project, and run
 the project respectively.
 
+## Entity Framework Core DB Migrations
+This project uses Entity Framework Core as an ORM, and requires migrations to be run on the db (vod.db file) before the application can be started. Make sure there is a DefaultConnection string in appsetings.json prior to running these commands. 
 
+[Read Microsoft Docs for EF Core](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
+
+Run this commands using the dotnet CLI:
+```console
+dotnet ef database update
+```
+Anytime a Model.cs file changes, you will need to create a new migration by running
+```console
+dotnet ef migrations add AddNewColumnToVerse
+```
+
+## Run the Application
 To build and run Verse of the Day:
 
 1. Go to the project folder and build to check for errors:
