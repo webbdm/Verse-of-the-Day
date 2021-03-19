@@ -35,6 +35,7 @@ body {
 
     .navigation h1 {
         color: white;
+        margin-left: 60px;
     }
 
     .navigation .nav-right a {
@@ -76,7 +77,22 @@ body {
 
     .verse-form .verse-form-inputs input {
         padding: 10px 15px;
+        border: none;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        margin: 0;
     }
+
+#numberverses {
+    border-top: 1px solid #08acec;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+
+    
 
 .verse-box {
     display: flex;
@@ -111,6 +127,11 @@ body {
     backdrop-filter: blur(2px); /* New property, not available in all browsers yet */
 }
 
+.verse-panel-header {
+    text-align: center;
+    margin-top: 30px;
+}
+
 .verse-text {
     margin: 10px;
     max-width: 300px;
@@ -132,7 +153,11 @@ body {
 }
 
 .favorites-header {
-    text-align: center;
+    text-align: left;
+    color: #08acec;
+    font-weight: 900;
+    margin-left: 20px;
+    font-size: 25px;
 }
 
 .favorites-wrapper{
@@ -168,7 +193,7 @@ body {
     .favorites-panel .favorites-right {
         display: flex;
         flex-direction: column;
-        max-width: 30%;
+        max-width: 40%;
     }
 
         .favorites-panel .favorites-right img {

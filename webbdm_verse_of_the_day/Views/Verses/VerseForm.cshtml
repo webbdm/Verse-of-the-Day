@@ -7,12 +7,12 @@
 <div class="verse-wrapper">
     <div class="verse-panel verse-form-panel">
 
-        <h2>@ViewData["Title"]</h2>
+        <h2 class="verse-panel-header">Fill your day with the Living Word of God</h2>
 
         <form class="verse-form "asp-controller="Verses" asp-action="SendVerse" method="post">
             <div class="verse-form-inputs">
-                <input placeholder="Start Date" type="text" name="StartDate" />
-                <input placeholder="Number of Verses" type="number" name="PageSize" />
+                <input required placeholder="Start Date MM/DD/YY" type="text" name="StartDate" />
+                <input id="numberverses" required placeholder="Number of Verses" type="number" name="PageSize" />
             </div>
 
             <button class="get-verses-btn" type="submit" value="Get Verses">Get Verses</button>
