@@ -212,8 +212,6 @@ body {
         }
 .favorites-box {
     width: 100%;
-/*    display: flex;
-    flex-direction: column;*/
 }
 
 
@@ -236,6 +234,25 @@ button {
     border-color: #08acec;
     border-radius: 5px;
     box-shadow: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .favorites-panel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+        .favorites-panel img {
+            min-height: 100%;
+            min-width: 400px;
+        }
+}
+
+@media screen and (min-width: 414) {
+    .favorites-panel img {
+        min-width: 100%;
+        height: 200px;
+    }
 }
 
 @media screen and (max-width: 475px) {
@@ -265,4 +282,15 @@ button {
         .navigation .nav-right a:hover {
          
         }
+}
+
+@media screen and (max-width: 768px) {
+    .favorites-panel .favorites-right {
+        min-width: 100%;
+    }
+
+    .favorites-panel img {
+        min-width: 100%;
+        min-height: 200px;
+    }
 }
