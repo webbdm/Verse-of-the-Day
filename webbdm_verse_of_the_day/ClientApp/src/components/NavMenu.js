@@ -22,7 +22,7 @@ export class NavMenu extends Component {
 
   render () {
     return (
-        <div class="navigation">
+        <div className="navigation">
             <div class="nav-left">
                 <img class="logo" src="../../Assets/klove_logo.png" />
             </div>
