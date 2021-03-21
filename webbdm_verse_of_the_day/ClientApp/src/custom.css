@@ -6,6 +6,8 @@ html, body {
 body {
     margin: 0;
     font-family: 'Didact Gothic', sans-serif;
+    background: url('./assets/mountains.jpeg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .navigation {

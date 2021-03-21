@@ -5,8 +5,23 @@ export class Home extends Component {
 
   render () {
     return (
-      <div>
-      </div>
+        <div class="verse-wrapper">
+            <div class="verse-panel verse-form-panel">
+
+                <h2 class="verse-panel-header">Fill your day with the Living Word of God</h2>
+
+                <form class="verse-form " asp-controller="Verses" asp-action="SendVerse" method="post">
+                    <div class="verse-form-inputs">
+                        <input required placeholder="Start Date MM/DD/YY" type="text" name="StartDate" />
+                        <input id="numberverses" required placeholder="Number of Verses" type="number" min="1" name="PageSize" />
+                    </div>
+
+                    <button class="get-verses-btn" type="submit" value="Get Verses">Get Verses</button>
+                </form>
+
+            </div>
+        </div>
+
     );
   }
 }
