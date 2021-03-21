@@ -3,10 +3,34 @@
 }
 
 
+@Html.ValidationMessage("Error")
+
 <body>
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+    <div class="verse-panel-error">
+        <div class="verse-panel">
+            We're sorry, the Verse of the Day service is not available at this time, but we have a verse for you and encourage you try again later.
+            <h2>
+                Your Verse of the Day:
+            </h2>
+            <p>
+            <strong>
+                "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."
+             — John 3:16
+            </strong>
+            </p>
+
+            @ViewBag.error
+            @Html.ValidationMessage("error_msg")
+        </div>
+    </div>
+    }
+   
     <div class="verse-box">
         @foreach (var verse in ViewBag.verses)
         {
+
             <div class="verse-panel">
                 <span class="verse-text">@verse.ReferenceText</span>
 
