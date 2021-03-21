@@ -1,5 +1,5 @@
 # Verse of the Day - .NET Core 
-MVC .NET Core 3.1 Web Application built with Entity Framework Core,SQL Lite, and a fully responsive UI
+MVC .NET Core 3.1 Web Application built with Entity Framework Core, SQL Lite, and a fully responsive UI
 
 ![Verse of the Day](https://user-images.githubusercontent.com/13399339/111725456-18769180-8835-11eb-89de-ea1c1446b83a.png)
 ## The Armor of God
@@ -8,11 +8,20 @@ Ephesians 6:10-11
 
 10 Finally, be strong in the Lord and in his mighty power. 11 Put on the full armor of God, so that you can take your stand against the devil’s schemes.
 
-This project provides daily scripture to all of those who need to hear it. Daily verses can be selected in any amount, and any scripture that is calling you to a deeper look today can be saved to the "My Favorites" page
+This project provides daily scripture to all of those who need to hear it. Daily verses can be selected in any amount, and any scripture that is calling you to a deeper look today can be saved to the "My Favorites" page.
 
+## Step 1: Download the Project
+Clone the application to your desired workspace folder in a terminal by running:
+```console
+git clone https://github.com/webbdm/Verse-of-the-Day.git
+```
+and then navigate to the project folder:
+```console
+cd  webbdm_verse_of_the_day
+```
 ## Important Credentials & Files Required:
 Copy appsettings.json.example as appsettings.json in the same folder
-and add your keys/secrets. These are required to access the Verse of the Day API. See example structure below:
+and add your keys/secrets that were emailed to you. These are required to access the Verse of the Day API. See example structure below:
 ```json
 {
   "ConnectionStrings": {
@@ -57,45 +66,48 @@ dotnet tool install --global dotnet-ef
 ```
 
 Run this commands using the dotnet CLI:
+
 ```console
 dotnet ef database update
 ```
 Anytime a Model.cs file changes, you will need to create a new migration by running
 ```console
-dotnet ef migrations add AddNewColumnToVerse
+dotnet ef migrations add <MigrationName>
 ```
+Note: MigrationName should be replaced with the name of your migration
 
-## Run the Application
+## Step 2: Run the Application
 To build and run Verse of the Day:
 
-1. Go to the project folder and build to check for errors:
+A. Go to the project folder and build to check for errors:
 
-    ```console
-    dotnet build
-    ```
+```console
+dotnet build
+```
 
-2. Run your project:
+B. Run your project:
 
-    ```console
-    dotnet run
-    ```
+```console
+dotnet run
+```
 
-3. Your console should look something like this (ports may differ)
-    ```console
-    info: Microsoft.Hosting.Lifetime[0]
-        Now listening on: https://localhost:5001
-    info: Microsoft.Hosting.Lifetime[0]
-        Now listening on: http://localhost:5000
-    info: Microsoft.Hosting.Lifetime[0]
-        Application started. Press Ctrl+C to shut down.
-    info: Microsoft.Hosting.Lifetime[0]
-        Hosting environment: Development
-    info: Microsoft.Hosting.Lifetime[0]
-        Content root path: ~/webbdm_verse_of_the_day/webbdm_verse_of_the_day
-    ^Cinfo: Microsoft.Hosting.Lifetime[0]
-    ```
+C. Your console should look something like this (ports may differ)
 
-4. Visit the above url and you should see the Verse of the Day Homepage. The app is now running successfully!
+```console
+info: Microsoft.Hosting.Lifetime[0]
+    Now listening on: https://localhost:5001
+info: Microsoft.Hosting.Lifetime[0]
+    Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+    Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+    Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+    Content root path: ~/webbdm_verse_of_the_day/webbdm_verse_of_the_day
+info: Microsoft.Hosting.Lifetime[0]
+```
+
+D. Visit the above url and you should see the Verse of the Day Homepage. The app is now running successfully!
 ## Homepage
  ![Homepage](https://user-images.githubusercontent.com/13399339/111725456-18769180-8835-11eb-89de-ea1c1446b83a.png)
 ## Verses from the Verse of the Day API
