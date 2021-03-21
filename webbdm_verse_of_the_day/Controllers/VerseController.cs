@@ -19,6 +19,8 @@ namespace webbdm_verse_of_the_day.Controllers
         private readonly IBibleService _bible;
         private readonly AppDbContext _context;
 
+        public List<Verse> verses { get; private set; }
+
         public VersesController(IBibleService bible, AppDbContext context)
         {
             _bible = bible;
@@ -54,8 +56,63 @@ namespace webbdm_verse_of_the_day.Controllers
                 return View("VerseResults");
         }
 
+
         [HttpPost("/favorited")]
         public StatusCodeResult SaveVerseToFavorites([FromBody] Verse verse)
+        {
+
+
+            // We store verses in the verses table and build up a cache over time in the db
+            // Check if a copy of the verse already exists
+            Verse foundVerse = _context.Verses.Find(verse.Id);
+
+
+            // Do nothing, Verse is already stored and a favorite exists
+            if (foundVerse != null) return StatusCode(204);
+
+
+            // Create the Verse and store a record in Favorites
+            if (foundVerse == null)
+            {
+                // Mark as favorited
+                verse.HasBeenFavorited = true;
+                _context.Verses.Add(verse);
+
+
+                // Create a new favorite using the verse
+                Favorite fav = new Favorite { VerseId = verse.Id };
+
+                _context.Favorites.Add(fav);
+            }
+
+            _context.SaveChangesAsync();
+
+            return StatusCode(200);
+
+        }
+
+        // JSON API Routes
+
+        [HttpPost("/api/verses")]
+        public IActionResult SendVerseAPI([FromBody] VerseRequest verseRequest)
+        {
+
+            try
+            {
+                verses = GetVerses(verseRequest.StartDate, verseRequest.PageSize).Result.verses;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
+
+            return Json(verses);
+        }
+
+        [HttpPost("/favorited")]
+        public StatusCodeResult SaveVerseToFavoritesAPI([FromBody] Verse verse)
         {
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+
 import { Link } from 'react-router-dom';
 
 export class NavMenu extends Component {
@@ -23,11 +23,11 @@ export class NavMenu extends Component {
   render () {
     return (
         <div className="navigation">
-            <div class="nav-left">
-                <img class="logo" src="../../Assets/klove_logo.png" />
+            <div className="nav-left">
+                <img className="logo" src="../../Assets/klove_logo.png" />
             </div>
-            <h1 class="nav-title">Verse of the Day</h1>
-            <div class="nav-right">
+            <h1 className="nav-title">Verse of the Day</h1>
+            <div className="nav-right">
                 <a href="/">Get Verses</a>
                 <a href="/favorites">My Favorites</a>
             </div>

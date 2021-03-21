@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 
-export const VerseResults = () => {
-    const verses = [];
+export const VerseResults = ({ verses }) => {
+    return <div class="verse-box">
+        {verses.map((verse) =>
+            (<div class="verse-panel">
+                <span class="verse-text">{verse.referenceText}</span>
 
-    return verses.map((verse) =>
-       ( <div class="verse-box">
-            <div class="verse-panel">
-                <span class="verse-text">@verse.ReferenceText</span>
-
-                <span class="verse-text">@verse.VerseText</span>
+                <span class="verse-text">{verse.verseText}</span>
 
                 <button class="favoriteBtn" name="favoriteBtn" id={verse.id}>Favorite</button>
 
-                <img src={verse.imagelink} />
+                <img src={verse.imageLink} />
 
-            </div>
-        </div>
-    ));
+        </div>))}
+    </div>
 };
