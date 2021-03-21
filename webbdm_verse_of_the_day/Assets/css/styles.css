@@ -115,6 +115,16 @@ body {
     border-top-right-radius: 0;
 }
 
+.verse-panel-error {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+    .verse-panel-error .verse-panel {
+        padding: 50px;
+    } 
+
 .verse-panel {
     display: flex;
     max-width: 400px;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -39,10 +40,18 @@ namespace webbdm_verse_of_the_day.Controllers
         [HttpPost]
         public IActionResult SendVerse([FromForm] VerseRequest verseRequest)
         {
+            try
+            {
+                ViewBag.verses = GetVerses(verseRequest.StartDate, verseRequest.PageSize).Result.verses;
 
-            ViewBag.verses =  GetVerses(verseRequest.StartDate, verseRequest.PageSize).Result.verses;
+            }
+            catch (Exception)
+            {
 
-            return View("VerseResults");
+                ViewBag.verses =  new List<string>();
+                ModelState.AddModelError("error_msg", " ");
+            }
+                return View("VerseResults");
         }
 
         [HttpPost("/favorited")]
