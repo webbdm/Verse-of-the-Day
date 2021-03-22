@@ -107,7 +107,14 @@ body {
 }
 
 .verse-form-panel {
-    max-height: 300px;
+    height: 400px;
+    margin: 30px;
+}
+
+.verse-form-error {
+    color: red;
+    font-weight: bold;
+    margin: 5px;
 }
 
 .get-verses-btn {
@@ -156,15 +163,17 @@ body {
 .favorites-verse-text {
     margin: 10px;
     font-size: 26px;
+    display: inline-block;
 }
 
 .left-corner-text {
+    display: inline-block;
     font-size: 24px;
     background-color: #08acec;
     border: 1px solid #08acec;
     border-top-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    margin: 0 0 5px -1px;
+    margin: -1px 10px 5px -1px;
     padding: 0.5px 6px 6px 6px;
 }
 

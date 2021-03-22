@@ -12,7 +12,7 @@ export const Favorites = () => {
 
         getFavorites();
 
-    }, [favorites]);
+    }, []);
 
     if(!favorites) return null;
 
@@ -21,24 +21,21 @@ export const Favorites = () => {
         <h2 className="favorites-header">My Favorites</h2>
             <div className="favorites-wrapper">
                 <div className="favorites-box">
-              
                     {favorites.map((favorite) =>
                         <div className="favorites-panel" key={favorite.id}>
                             <div className="favorites-left">
                                 <div>
                                     <div className="favorites-text">
                                         <span className="favorites-verse-text left-corner-text">{favorite.verse.referenceText}</span>
-                                   
-                        </div>
+                                    </div>
 
                                     <span className="favorites-verse-text">{favorite.verse.verseText}</span>
-                                    </div>
-                    </div>
+                                </div>
+                            </div>
                             <div className="favorites-right">
-                                    <img src={favorite.verse.imageLink} />
+                                <img src={favorite.verse.imageLink} alt="Verse"/>
                             </div>
                         </div>
-
                     )}
                 </div>
             </div>

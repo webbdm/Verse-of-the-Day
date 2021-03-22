@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 export const NavMenu = () =>
     <div className="navigation">
         <div className="nav-left">
-            <img className="logo" src="../../Assets/klove_logo.png" />
+            <img className="logo" src="../../Assets/klove_logo.png" alt="K-Love Logo"/>
         </div>
         <h1 className="nav-title">Verse of the Day</h1>
         <div className="nav-right">
