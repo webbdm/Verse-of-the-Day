@@ -20,9 +20,6 @@ export const Home = () => {
                     pageSize: parseInt(pageSize)
                 })
         });
-
-
-
         
         setVerses(await result.json());
 
