@@ -11,7 +11,7 @@ using webbdm_verse_of_the_day.Models;
 namespace webbdm_verse_of_the_day.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/favorites")]
     public class FavoritesController : Controller
 
     {
@@ -26,15 +26,27 @@ namespace webbdm_verse_of_the_day.Controllers
         [HttpGet]
         public IActionResult Favorites()
         {
-            var yay = _context.Favorites
-                .Include(f => f.Verse).ToList();
-
             ViewBag.favorites = _context.Favorites
                 .Include(f => f.Verse).ToList();
 
 
             return View("Favorites");
         }
+
+        // JSON API routes
+        [HttpGet("api/all")]
+        public IActionResult FavoritesAPI()
+        {
+            var favorites = _context.Favorites
+                .Include(f => f.Verse).ToList();
+
+            ViewBag.favorites = _context.Favorites
+                .Include(f => f.Verse).ToList();
+
+            Console.WriteLine(favorites);
+            return Json(favorites);
+        }
+
 
         // Stretch Goal
         [HttpPost("/unfavorite")]
@@ -50,6 +62,8 @@ namespace webbdm_verse_of_the_day.Controllers
             return View("Favorites");
 
         }
+
+
 
     }
 }

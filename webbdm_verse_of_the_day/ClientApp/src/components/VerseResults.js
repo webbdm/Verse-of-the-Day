@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export const VerseResults = ({ verses }) => {
     return <div class="verse-box">
@@ -11,7 +11,6 @@ export const VerseResults = ({ verses }) => {
                 <button class="favoriteBtn" name="favoriteBtn" id={verse.id}>Favorite</button>
 
                 <img src={verse.imageLink} />
-
         </div>))}
     </div>
 };
