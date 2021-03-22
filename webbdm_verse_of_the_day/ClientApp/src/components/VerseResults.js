@@ -34,6 +34,6 @@ export const VerseResults = ({ verses }) => {
                 {showingSavedToFavorites && <p>Saved to Favorites!</p>}
 
                 <img src={verse.imageLink} alt="Verse" />
-        </div>))}
+            </div>))}
     </div>
 };

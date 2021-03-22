@@ -14,11 +14,11 @@ export const Favorites = () => {
 
     }, []);
 
-    if(!favorites) return null;
+    if (!favorites) return null;
 
     return (
         <React.Fragment>
-        <h2 className="favorites-header">My Favorites</h2>
+            <h2 className="favorites-header">My Favorites</h2>
             <div className="favorites-wrapper">
                 <div className="favorites-box">
                     {favorites.map((favorite) =>
@@ -33,12 +33,12 @@ export const Favorites = () => {
                                 </div>
                             </div>
                             <div className="favorites-right">
-                                <img src={favorite.verse.imageLink} alt="Verse"/>
+                                <img src={favorite.verse.imageLink} alt="Verse" />
                             </div>
                         </div>
                     )}
                 </div>
             </div>
-         </React.Fragment>
-        )
+        </React.Fragment>
+    )
 }

@@ -11,12 +11,12 @@ import './custom.css'
 export default class App extends Component {
   static displayName = App.name;
 
-  render () {
+  render() {
     return (
       <Layout>
         <Route exact path='/' component={Home} />
-            <Route path='/results' component={VerseResults} />
-            <Route path='/favorites' component={Favorites} />
+        <Route path='/results' component={VerseResults} />
+        <Route path='/favorites' component={Favorites} />
       </Layout>
     );
   }
