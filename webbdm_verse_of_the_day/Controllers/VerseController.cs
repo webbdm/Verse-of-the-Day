@@ -19,6 +19,8 @@ namespace webbdm_verse_of_the_day.Controllers
         private readonly IBibleService _bible;
         private readonly AppDbContext _context;
 
+        public List<Verse> verses { get; private set; }
+
         public VersesController(IBibleService bible, AppDbContext context)
         {
             _bible = bible;
@@ -54,6 +56,7 @@ namespace webbdm_verse_of_the_day.Controllers
                 return View("VerseResults");
         }
 
+
         [HttpPost("/favorited")]
         public StatusCodeResult SaveVerseToFavorites([FromBody] Verse verse)
         {
@@ -86,6 +89,26 @@ namespace webbdm_verse_of_the_day.Controllers
 
             return StatusCode(200);
 
+        }
+
+        // JSON API Routes
+
+        [HttpPost("/api/verses")]
+        public IActionResult SendVerseAPI([FromBody] VerseRequest verseRequest)
+        {
+
+            try
+            {
+                verses = GetVerses(verseRequest.StartDate, verseRequest.PageSize).Result.verses;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+            }
+
+            return Json(verses);
         }
     }
 }

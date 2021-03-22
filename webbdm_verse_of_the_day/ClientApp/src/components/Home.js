@@ -1,26 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { VerseResults } from "./VerseResults";
+import { useInput } from "../hooks/useInput";
 
-export class Home extends Component {
-  static displayName = Home.name;
+export const Home = () => {
+    const [verses, setVerses] = useState([]);
+    const [error, setError] = useState(null);
 
-  render () {
+    const { value: startDate, setValue: setStartDate } = useInput('');
+    const { value: pageSize, setValue: setPageSize } = useInput(1);
+
+    const fetchVerses = async () => {
+        if (!startDate.length) {
+            setError({ type: "invalidForm", message: "Please enter a Start Date" });
+            return;
+        };
+
+        const result = await fetch("/api/verses", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                startDate: startDate,
+                pageSize: parseInt(pageSize)
+            })
+        });
+
+        setVerses(await result.json());
+    };
+
+
+    if (verses && verses.length) return <VerseResults verses={verses} />
+
     return (
-      <div>
-        <h1>Hello, world!</h1>
-        <p>Welcome to your new single-page application, built with:</p>
-        <ul>
-          <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-          <li><a href='https://facebook.github.io/react/'>React</a> for client-side code</li>
-          <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-        </ul>
-        <p>To help you get started, we have also set up:</p>
-        <ul>
-          <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-          <li><strong>Development server integration</strong>. In development mode, the development server from <code>create-react-app</code> runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-          <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration produces minified, efficiently bundled JavaScript files.</li>
-        </ul>
-        <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
-      </div>
+        <div className="verse-wrapper">
+            <div className="verse-panel verse-form-panel">
+                <h2 className="verse-panel-header">Fill your day with the Living Word of God</h2>
+                <div className="verse-form">
+                    <div className="verse-form-inputs">
+                        <input onChange={e => setStartDate(e.target.value)} required placeholder="Start Date MM/DD/YY" type="text" name="StartDate" />
+                        <input onChange={e => setPageSize(e.target.value)} id="numberverses" required placeholder="Number of Verses" type="number" min="1" name="PageSize" />
+                    </div>
+                    <button onClick={() => fetchVerses()} className="get-verses-btn" value="Get Verses">Get Verses</button>
+                    {error && <p className="verse-form-error">{error.message}</p>}
+                </div>
+            </div>
+        </div>
     );
-  }
 }
